@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
+﻿using Xunit;
 using static FileExtensions.FileExtensions;
 
 namespace Day2.UnitTests
@@ -26,7 +21,7 @@ namespace Day2.UnitTests
         [InlineData("ababab", 2, false)]
         [InlineData("ababab", 3, true)]
         public void ContainsLetterTests(string input, int numberOfOccurrences, bool expected) => 
-            Assert.Equal(expected, input.ContainsLetter(numberOfOccurrences));
+            Assert.Equal(expected, input.ContainsAnyLetterExactNumberOfOccurences(numberOfOccurrences));
 
         [Fact]
         public void ChecksumTests() => 
