@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using FunctionalExtensions;
+using static System.Math;
 
 namespace Day2
 {
@@ -20,8 +21,8 @@ namespace Day2
             first.DifferingIndexes(second).ToArray().SingleOrNone();
 
         private static IEnumerable<int> DifferingIndexes(this string first, string second) =>
-            first
-                .Select((_, index) => index < second.Length && first[index] != second[index] ? index : -1)
-                .Where(index => index != -1);
+            Enumerable
+                .Range(0, Min(first.Length, second.Length))
+                .Where(index => first[index] != second[index]);
     }
 }
