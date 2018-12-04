@@ -11,15 +11,15 @@ namespace Day1
         public static Frequency Calibrate(this Frequency frequency, int[] deltas) =>
             deltas.Aggregate(frequency, (current, delta) => current.Calibrate(delta));
 
-        public static Frequency CalibrateUntilFrequencyNotRepeated(this Frequency frequency, int[] changes)
+        public static Frequency CalibrateUntilRepeated(this Frequency frequency, int[] deltas)
         {
             var seen = new HashSet<Frequency> { frequency };
 
             while (true)
             {
-                foreach (int change in changes)
+                foreach (int delta in deltas)
                 {
-                    frequency = frequency.Calibrate(change);
+                    frequency = frequency.Calibrate(delta);
                     if (seen.Contains(frequency))
                         return frequency;
 

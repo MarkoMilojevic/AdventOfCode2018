@@ -21,11 +21,11 @@ namespace Day1.UnitTests
         [InlineData(new[] { 3, 3, 4, -2, -4 }, 10)]
         [InlineData(new[] { -6, 3, 8, 5, -6 }, 5)]
         [InlineData(new[] { 7, 7, -2, -7, -4 }, 14)]
-        public void CalibrateUntilFrequencyNotRepeated(int[] changes, int expected) =>
-            Assert.Equal(expected, Frequency.Zero.CalibrateUntilFrequencyNotRepeated(changes));
+        public void CalibrateUntilRepeated(int[] changes, int expected) =>
+            Assert.Equal(expected, Frequency.Zero.CalibrateUntilRepeated(changes));
 
         [Fact]
         public void IntegrationTestPartTwo() =>
-            Assert.Equal(61126, Frequency.Zero.CalibrateUntilFrequencyNotRepeated(ReadIntArrayFromFile("day1_two.txt")));
+            Assert.Equal(61126, Frequency.Zero.CalibrateUntilRepeated(ReadIntArrayFromFile("day1_two.txt")));
     }
 }
