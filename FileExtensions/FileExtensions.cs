@@ -8,7 +8,6 @@ namespace FileExtensions
         public static int[] ReadIntArrayFromFile(string filePath) =>
             File
                 .ReadLines(filePath)
-                .Select(s => s.Trim())
                 .Select(int.Parse)
                 .ToArray();
 
@@ -18,6 +17,11 @@ namespace FileExtensions
                 .Select(line => line.Split(' ')
                     .Select(int.Parse)
                     .ToArray())
+                .ToArray();
+
+        public static string[] ReadStringArrayFromFile(string filePath) =>
+            File
+                .ReadLines(filePath)
                 .ToArray();
 
         public static string[][] ReadStringMatrixFromFile(string filePath) =>
