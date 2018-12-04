@@ -1,4 +1,7 @@
-﻿using Xunit;
+﻿using System.Collections.Generic;
+using System.Linq;
+using FunctionalExtensions;
+using Xunit;
 using static FileExtensions.FileExtensions;
 
 namespace Day2.UnitTests
@@ -20,16 +23,39 @@ namespace Day2.UnitTests
         [InlineData("abcdee", 3, false)]
         [InlineData("ababab", 2, false)]
         [InlineData("ababab", 3, true)]
-        public void ContainsLetterTests(string input, int numberOfOccurrences, bool expected) => 
+        public void ContainsLetterTests(string input, int numberOfOccurrences, bool expected) =>
             Assert.Equal(expected, input.ContainsAnyLetterExactNumberOfOccurrences(numberOfOccurrences));
 
         [Fact]
-        public void ChecksumTests() => 
+        public void ChecksumTests() =>
             Assert.Equal(12, new[] { "abcdef", "bababc", "abbcde", "abcccd", "aabcdd", "abcdee", "ababab" }.Checksum());
 
 
         [Fact]
         public void IntegrationTestPartOne() =>
             Assert.Equal(8118, ReadStringArrayFromFile("day2_one.txt").Checksum());
+
+        [Fact]
+        public void CommonAfterRemovingDifferingCharacterTest() =>
+            Assert.Equal("fgij", "fghij".CommonAfterRemovingDifferingCharacter("fguij").Reduce((string) null));
+
+        [Fact]
+        public void IntegrationTestPartTwo()
+        {
+            var result = new List<Option<string>>();
+            string[] ids = ReadStringArrayFromFile("day2_two.txt");
+
+            for (int i = 0; i < ids.Length - 1; i++)
+            {
+                string first = ids[i];
+                for (int j = i + 1; j < ids.Length; j++)
+                {
+                    string second = ids[j];
+                    result.Add(first.CommonAfterRemovingDifferingCharacter(second));
+                }
+            }
+
+            Assert.Equal("jbbenqtlaxhivmwyscjukztdp", result.OfType<Some<string>>().Single().Reduce((string) null));
+        }
     }
 }

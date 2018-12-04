@@ -44,5 +44,11 @@
     <Compile Include="StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FunctionalExtensions\FunctionalExtensions.csproj">
+      <Project>{5626B6B9-20CE-4062-AF02-0782A4B55511}</Project>
+      <Name>FunctionalExtensions</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

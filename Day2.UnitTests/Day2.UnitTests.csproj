@@ -75,8 +75,15 @@
       <Project>{f4fbce92-c48e-449f-880c-2719070629c5}</Project>
       <Name>FileExtensions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FunctionalExtensions\FunctionalExtensions.csproj">
+      <Project>{5626B6B9-20CE-4062-AF02-0782A4B55511}</Project>
+      <Name>FunctionalExtensions</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="day2_two.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="day2_one.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
