@@ -21,7 +21,7 @@ namespace Day2.UnitTests
         [InlineData("ababab", 2, false)]
         [InlineData("ababab", 3, true)]
         public void ContainsLetterTests(string input, int numberOfOccurrences, bool expected) => 
-            Assert.Equal(expected, input.ContainsAnyLetterExactNumberOfOccurences(numberOfOccurrences));
+            Assert.Equal(expected, input.ContainsAnyLetterExactNumberOfOccurrences(numberOfOccurrences));
 
         [Fact]
         public void ChecksumTests() => 
