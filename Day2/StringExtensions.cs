@@ -13,11 +13,11 @@ namespace Day2
             ids.Count(id => id.ContainsAnyLetterExactNumberOfOccurrences(2)) *
             ids.Count(id => id.ContainsAnyLetterExactNumberOfOccurrences(3));
 
-        public static Option<string> CommonAfterRemovingDifferingCharacter(this string s1, string s2) =>
-            s1.DifferingIndex(s2).Map(index => s1.Remove(index, 1));
+        public static Option<string> CommonAfterRemovingDifferingCharacter(this string first, string second) =>
+            first.DifferingIndex(second).Map(index => first.Remove(index, 1));
 
-        private static Option<int> DifferingIndex(this string s1, string s2) =>
-            s1.DifferingIndexes(s2).ToArray().SingleOrNone();
+        private static Option<int> DifferingIndex(this string first, string second) =>
+            first.DifferingIndexes(second).ToArray().SingleOrNone();
 
         private static IEnumerable<int> DifferingIndexes(this string first, string second) =>
             first
