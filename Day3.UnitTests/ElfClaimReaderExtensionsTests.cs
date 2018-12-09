@@ -8,8 +8,8 @@ namespace Day3.UnitTests
     {
         [Theory]
         [MemberData(nameof(ParseClaimTestsParams))]
-        public void ParseClaimTests(string line, ElfClaim expected) =>
-            Assert.Equal(expected, ParseClaim(line));
+        public void ParseElfClaimTests(string line, ElfClaim expected) =>
+            Assert.Equal(expected, ParseElfClaim(line));
 
         public static IEnumerable<object[]> ParseClaimTestsParams()
         {

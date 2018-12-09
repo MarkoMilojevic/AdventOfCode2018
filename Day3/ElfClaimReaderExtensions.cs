@@ -7,9 +7,9 @@ namespace Day3
     public static class ElfClaimReaderExtensions
     {
         public static IEnumerable<ElfClaim> ReadElfClaimsFromFile(string filePath) => 
-            ReadStringArrayFromFile(filePath).Select(ParseClaim);
+            ReadStringArrayFromFile(filePath).Select(ParseElfClaim);
 
-        public static ElfClaim ParseClaim(string line) => 
+        public static ElfClaim ParseElfClaim(string line) => 
             new ElfClaim(ExtractClaimId(line), ExtractClaimRectangle(line));
 
         public static int ExtractClaimId(string line) => 
