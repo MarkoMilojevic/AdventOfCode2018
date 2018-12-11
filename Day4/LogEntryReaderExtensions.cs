@@ -10,6 +10,9 @@ namespace Day4
     {
         private const string TimestampFormat = "yyyy-MM-dd HH:mm";
 
+        public static LogBook ReadLogBookFromFile(string filePath) =>
+            new LogBook(ReadLogEntriesFromFile(filePath));
+
         public static IEnumerable<LogEntry> ReadLogEntriesFromFile(string filePath) =>
             ReadStringArrayFromFile(filePath).Select(ParseLogEntry);
 

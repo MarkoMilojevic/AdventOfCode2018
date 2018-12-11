@@ -22,16 +22,16 @@ namespace Day3.UnitTests
         [InlineData("#1 @ 49,222: 19x20", 1)]
         [InlineData("#2 @ 162,876: 28x29", 2)]
         [InlineData("#3 @ 28,156: 17x18", 3)]
-        public void ExtractClaimIdTests(string line, int expectedClaimId) => 
-            Assert.Equal(expectedClaimId, ExtractClaimId(line));
+        public void ExtractElfClaimIdTests(string line, int expectedClaimId) => 
+            Assert.Equal(expectedClaimId, ExtractElfClaimId(line));
         
         [Theory]
         [InlineData("#1 @ 49,222: 19x20", 49, 222)]
         [InlineData("#2 @ 162,876: 28x29", 162, 876)]
         [InlineData("#3 @ 28,156: 17x18", 28, 156)]
-        public void ExtractClaimRectangleTopLeftCoordinatesTests(string line, int expectedX, int expectedY)
+        public void ExtractElfClaimRectangleTopLeftCoordinatesTests(string line, int expectedX, int expectedY)
         {
-            (int topLeftX, int topLeftY) = ExtractClaimRectangleTopLeftCoordinates(line);
+            (int topLeftX, int topLeftY) = ExtractElfClaimRectangleTopLeftCoordinates(line);
 
             Assert.Equal(expectedX, topLeftX);
             Assert.Equal(expectedY, topLeftY);
@@ -41,9 +41,9 @@ namespace Day3.UnitTests
         [InlineData("#1 @ 49,222: 19x20", 19, 20)]
         [InlineData("#2 @ 162,876: 28x29", 28, 29)]
         [InlineData("#3 @ 28,156: 17x18", 17, 18)]
-        public void ExtractClaimRectangleDimensionsTests(string line, int expectedWidth, int expectedHeight)
+        public void ExtractElfClaimRectangleDimensionsTests(string line, int expectedWidth, int expectedHeight)
         {
-            (int width, int height) = ExtractClaimRectangleDimensions(line);
+            (int width, int height) = ExtractElfClaimRectangleDimensions(line);
 
             Assert.Equal(expectedWidth, width);
             Assert.Equal(expectedHeight, height);

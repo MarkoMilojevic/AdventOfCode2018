@@ -6,66 +6,46 @@ namespace Day4
 {
     public class LogBook
     {
-        public IReadOnlyList<GuardLogEntries> GuardLogEntrieses { get; }
+        private IReadOnlyList<GuardLogEntries> GuardLogEntries { get; }
 
         public LogBook(IEnumerable<LogEntry> logEntries)
         {
             List<LogEntry> logEntriesList = logEntries?.ToList() ?? throw new ArgumentNullException(nameof(logEntries));
 
-            GuardLogEntrieses = logEntriesList.Count == 0
-                                    ? new List<GuardLogEntries>()
-                                    : ToGuardLogEntries(logEntriesList);
+            GuardLogEntries = ToGuardLogEntries(logEntriesList);
         }
 
-        public int PuzzleOutput1() =>
-            GuardLogEntrieses
-                .OrderByDescending(entry => entry.TotalMinutesAsleep())
-                .First()
-                .PuzzleOutput();
-
-        public int PuzzleOutput2() =>
-            GuardLogEntrieses
-                .OrderByDescending(entry => entry.MostAsleepOnSameMinute())
-                .First()
-                .PuzzleOutput();
-
-        private static List<GuardLogEntries> ToGuardLogEntries(List<LogEntry> logEntriesList) =>
-            GroupGuardLogEntriesByGuardId(logEntriesList)
-                .Select(kvp => new GuardLogEntries(kvp.Key, kvp.Value))
-                .ToList();
-
-        private static Dictionary<int, List<GuardLogEntry>> GroupGuardLogEntriesByGuardId(List<LogEntry> logEntriesList)
+        private static IReadOnlyList<GuardLogEntries> ToGuardLogEntries(IReadOnlyList<LogEntry> logEntries)
         {
-            var entriesByGuardId = new Dictionary<int, List<GuardLogEntry>>();
+            if (logEntries.Count == 0)
+                return new List<GuardLogEntries>();
 
-            logEntriesList = logEntriesList
-                             .OrderBy(logEntry => logEntry.Timestamp)
-                             .ToList();
-
-            int runningGuardId = ExtractGuardId(logEntriesList.First().Log);
-
-            foreach (LogEntry logEntry in logEntriesList)
-            {
-                var guardLogEntry = new GuardLogEntry(logEntry.Timestamp, logEntry.Log);
-
-                if (guardLogEntry.EventType == EventType.BeginsShift)
-                {
-                    runningGuardId = ExtractGuardId(logEntry.Log);
-                    if (!entriesByGuardId.ContainsKey(runningGuardId))
-                    {
-                        entriesByGuardId[runningGuardId] = new List<GuardLogEntry>();
-                    }
-                }
-
-                entriesByGuardId[runningGuardId].Add(guardLogEntry);
-            }
-
-            return entriesByGuardId;
+            return logEntries
+                   .GroupLogsByGuardId()
+                   .Select(logsByGuardId => new GuardLogEntries(logsByGuardId.Key, logsByGuardId.Value))
+                   .ToList();
         }
 
-        private static int ExtractGuardId(string line) =>
-            int.Parse(line
-                      .Substring(line.IndexOf("#", StringComparison.Ordinal) + 1)
-                      .Replace(" begins shift", string.Empty));
+        public int PuzzleOutput1()
+        {
+            if (GuardLogEntries.Count == 0)
+                return 0;
+
+            return GuardLogEntries
+                   .OrderByDescending(log => log.TotalMinutesAsleep())
+                   .First()
+                   .PuzzleOutput();
+        }
+
+        public int PuzzleOutput2()
+        {
+            if (GuardLogEntries.Count == 0)
+                return 0;
+
+            return GuardLogEntries
+                   .OrderByDescending(log => log.MostAsleepOnSameMinute())
+                   .First()
+                   .PuzzleOutput();
+        }
     }
 }

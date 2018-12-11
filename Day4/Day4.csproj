@@ -41,10 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EventType.cs" />
     <Compile Include="GuardLogEntries.cs" />
-    <Compile Include="GuardLogEntry.cs" />
     <Compile Include="LogBook.cs" />
+    <Compile Include="LogEntriesExtensions.cs" />
     <Compile Include="LogEntry.cs" />
     <Compile Include="LogEntryReaderExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

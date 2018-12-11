@@ -33,7 +33,7 @@ namespace Day2.UnitTests
 
         [Fact]
         public void IntegrationTestPartOne() =>
-            Assert.Equal(8118, ReadStringArrayFromFile("day2_one.txt").Checksum());
+            Assert.Equal(8118, ReadStringArrayFromFile("day2.txt").Checksum());
 
         [Fact]
         public void CommonAfterRemovingDifferingCharacterTest() =>
@@ -43,7 +43,7 @@ namespace Day2.UnitTests
         public void IntegrationTestPartTwo()
         {
             var result = new List<Option<string>>();
-            string[] ids = ReadStringArrayFromFile("day2_two.txt");
+            string[] ids = ReadStringArrayFromFile("day2.txt");
 
             for (int i = 0; i < ids.Length - 1; i++)
             {

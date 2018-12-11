@@ -24,7 +24,7 @@ namespace Day3.UnitTests
         public void IntegrationTestPartOne()
         {
             var fabric = new Fabric();
-            IEnumerable<ElfClaim> claims = ReadElfClaimsFromFile("day3_one.txt");
+            IEnumerable<ElfClaim> claims = ReadElfClaimsFromFile("day3.txt");
 
             foreach (ElfClaim elfClaim in claims)
                 fabric.MakeClaim(elfClaim);
@@ -51,14 +51,14 @@ namespace Day3.UnitTests
         public void IntegrationTestPartTwo()
         {
             var fabric = new Fabric();
-            ElfClaim[] claims = ReadElfClaimsFromFile("day3_two.txt").ToArray();
+            ElfClaim[] claims = ReadElfClaimsFromFile("day3.txt").ToArray();
 
             foreach (ElfClaim elfClaim in claims)
                 fabric.MakeClaim(elfClaim);
 
             ElfClaim notOverlapping = claims.Single(claim => !fabric.IsOverlapping(claim));
 
-            Assert.Equal(894, notOverlapping.ClaimId);
+            Assert.Equal(894, notOverlapping.Id);
         }
 
     }

@@ -31,7 +31,6 @@ namespace Day4.UnitTests
                 "[1518-11-01 00:25] wakes up",
                 new LogEntry(new DateTime(1518, 11, 01, 00, 25, 00), "wakes up")
             };
-
         }
     }
 }

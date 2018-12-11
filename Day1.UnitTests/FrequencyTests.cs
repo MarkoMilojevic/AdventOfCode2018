@@ -14,7 +14,7 @@ namespace Day1.UnitTests
 
         [Fact]
         public void IntegrationTestPartOne() => 
-            Assert.Equal(423, Frequency.Zero.Calibrate(ReadIntArrayFromFile("day1_one.txt")));
+            Assert.Equal(423, Frequency.Zero.Calibrate(ReadIntArrayFromFile("day1.txt")));
 
         [Theory]
         [InlineData(new[] { 1, -1 }, 0)]
@@ -26,6 +26,6 @@ namespace Day1.UnitTests
 
         [Fact]
         public void IntegrationTestPartTwo() =>
-            Assert.Equal(61126, Frequency.Zero.CalibrateUntilRepeated(ReadIntArrayFromFile("day1_two.txt")));
+            Assert.Equal(61126, Frequency.Zero.CalibrateUntilRepeated(ReadIntArrayFromFile("day1.txt")));
     }
 }

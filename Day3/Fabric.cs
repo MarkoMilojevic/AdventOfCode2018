@@ -35,6 +35,9 @@ namespace Day3
 
         public bool IsOverlapping(ElfClaim claim)
         {
+            if (claim == null)
+                throw new ArgumentNullException(nameof(claim));
+
             for (int i = claim.Rectangle.TopLeftX; i < claim.Rectangle.TopLeftX + claim.Rectangle.Width; i++)
                 for (int j = claim.Rectangle.TopLeftY; j < claim.Rectangle.TopLeftY + claim.Rectangle.Height; j++)
                     if (ClaimedPositions[i][j] > 1)
