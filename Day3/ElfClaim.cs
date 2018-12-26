@@ -6,25 +6,25 @@ namespace Day3
 {
     public sealed class ElfClaim : ValueObject
     {
-        public int ClaimId { get; }
+        public int Id { get; }
         public Rectangle Rectangle { get; }
 
-        public ElfClaim(int claimId, Rectangle rectangle)
+        public ElfClaim(int id, Rectangle rectangle)
         {
-            if (claimId <= 0)
-                throw new ArgumentOutOfRangeException(nameof(claimId));
+            if (id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(id));
 
-            ClaimId = claimId;
+            Id = id;
             Rectangle = rectangle ?? throw new ArgumentNullException(nameof(rectangle));
         }
 
         protected override IEnumerable<object> GetAtomicValues()
         {
-            yield return ClaimId;
+            yield return Id;
             yield return Rectangle;
         }
 
         public override string ToString() => 
-            $"#{ClaimId} @ {Rectangle}";
+            $"#{Id} @ {Rectangle}";
     }
 }

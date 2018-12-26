@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 using static Day3.ElfClaimReaderExtensions;
 
@@ -11,7 +12,7 @@ namespace Day3.UnitTests
         {
             var fabric = new Fabric();
             var claimLines = new[] { "#1 @ 1,3: 4x4", "#2 @ 3,1: 4x4", "#3 @ 5,5: 2x2" };
-            var claims = claimLines.Select(ParseClaim);
+            IEnumerable<ElfClaim> claims = claimLines.Select(ParseElfClaim);
 
             foreach (ElfClaim elfClaim in claims)
                 fabric.MakeClaim(elfClaim);
@@ -23,7 +24,7 @@ namespace Day3.UnitTests
         public void IntegrationTestPartOne()
         {
             var fabric = new Fabric();
-            var claims = ReadElfClaimsFromFile("day3_one.txt");
+            IEnumerable<ElfClaim> claims = ReadElfClaimsFromFile("day3.txt");
 
             foreach (ElfClaim elfClaim in claims)
                 fabric.MakeClaim(elfClaim);
@@ -36,7 +37,7 @@ namespace Day3.UnitTests
         {
             var fabric = new Fabric();
             var claimLines = new[] { "#1 @ 1,3: 4x4", "#2 @ 3,1: 4x4", "#3 @ 5,5: 2x2" };
-            var claims = claimLines.Select(ParseClaim).ToArray();
+            ElfClaim[] claims = claimLines.Select(ParseElfClaim).ToArray();
 
             foreach (ElfClaim elfClaim in claims)
                 fabric.MakeClaim(elfClaim);
@@ -50,14 +51,14 @@ namespace Day3.UnitTests
         public void IntegrationTestPartTwo()
         {
             var fabric = new Fabric();
-            var claims = ReadElfClaimsFromFile("day3_two.txt").ToArray();
+            ElfClaim[] claims = ReadElfClaimsFromFile("day3.txt").ToArray();
 
             foreach (ElfClaim elfClaim in claims)
                 fabric.MakeClaim(elfClaim);
 
             ElfClaim notOverlapping = claims.Single(claim => !fabric.IsOverlapping(claim));
 
-            Assert.Equal(894, notOverlapping.ClaimId);
+            Assert.Equal(894, notOverlapping.Id);
         }
 
     }

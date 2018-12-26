@@ -6,11 +6,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EC0D9559-77C0-4968-87EB-A207E466E9A3}</ProjectGuid>
+    <ProjectGuid>{EB817C06-E935-4D0D-B034-076DFB698E95}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Day1.UnitTests</RootNamespace>
-    <AssemblyName>Day1.UnitTests</AssemblyName>
+    <RootNamespace>Day4.UnitTests</RootNamespace>
+    <AssemblyName>Day4.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -57,8 +57,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrequencyTests.cs" />
+    <Compile Include="GuardLogEntriesTests.cs" />
+    <Compile Include="LogBookTests.cs" />
+    <Compile Include="LogEntryReaderExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Day4\Day4.csproj">
+      <Project>{d1f757c4-a235-4497-8bd5-f9d4bfa6f17f}</Project>
+      <Name>Day4</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FunctionalExtensions\FunctionalExtensions.csproj">
+      <Project>{5626B6B9-20CE-4062-AF02-0782A4B55511}</Project>
+      <Name>FunctionalExtensions</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -67,21 +79,7 @@
     <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Day1\Day1.csproj">
-      <Project>{BEA9014E-6B64-4DD9-9EB1-C5B17AD0716C}</Project>
-      <Name>Day1</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FileExtensions\FileExtensions.csproj">
-      <Project>{F4FBCE92-C48E-449F-880C-2719070629C5}</Project>
-      <Name>FileExtensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FunctionalExtensions\FunctionalExtensions.csproj">
-      <Project>{5626B6B9-20CE-4062-AF02-0782A4B55511}</Project>
-      <Name>FunctionalExtensions</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="day1.txt">
+    <Content Include="day4.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
