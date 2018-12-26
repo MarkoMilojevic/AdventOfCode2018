@@ -15,10 +15,10 @@ namespace Day2
             ids.Count(id => id.ContainsAnyLetterExactNumberOfOccurrences(3));
 
         public static Option<string> CommonAfterRemovingDifferingCharacter(this string first, string second) =>
-            first.SingleOrNoneDifferingIndex(second).Map(index => first.Remove(index, 1));
-
-        private static Option<int> SingleOrNoneDifferingIndex(this string first, string second) =>
-            first.DifferingIndexes(second).ToArray().SingleOrNone();
+            first
+                .DifferingIndexes(second)
+                .SingleOrNone()
+                .Map(index => first.Remove(index, 1));
 
         private static IEnumerable<int> DifferingIndexes(this string first, string second) =>
             Enumerable
